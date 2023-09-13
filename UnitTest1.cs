@@ -21,6 +21,18 @@ public class CompressionTests
     }
 
     [Test]
+    public void CanUseStreamsLongerThan1()
+    {
+        Assert.AreEqual("aaabcbcbdcbdc", CompressedString.Decompress("abcd", new int[]{1,2,1}, new int[]{1,2,3}, new int []{2,3,4}));
+    }
+
+    [Test]
+    public void CanUseStreamsLongerThan1Bigger()
+    {
+        Assert.AreEqual("abcbcbcbcbcbcbdaaaaaaeaaaeaaaeaa", CompressedString.Decompress("abcdae", new int[]{3,2,1}, new int[]{2,1,4}, new int []{11,5,10}));
+    }
+
+    [Test]
     public void Constructor()
     {
         var message = "abcdefgcdefgcdefgcde";
