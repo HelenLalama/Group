@@ -74,11 +74,10 @@ public class CompressedString : IEnumerable<char>
             }
             else
             {
-                // Add the run-length encoded data to 'encoded'
+                // Add the run-length encoded data to encoded
                 encoded.Add(currentChar);
                 encoded.Add((char)count);
 
-                // Reset for the next run
                 currentChar = c;
                 count = 1;
             }
@@ -88,7 +87,6 @@ public class CompressedString : IEnumerable<char>
         encoded.Add(currentChar);
         encoded.Add((char)count);
 
-        // Update counts for decompression
         countsToTakeFromOriginal.Add(original.Count());
         amountsToBacktrackInEncoded.Add(0);
         countsToCopyFromEncoded.Add(0);
